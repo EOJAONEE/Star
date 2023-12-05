@@ -1,0 +1,79 @@
+
+.formulario {
+    background-color: rgb(31, 29, 39);
+    width: 100vw;
+    height: 100vh;
+}
+
+.logo {
+    background-color: transparent;
+    background-image: url(https://static-assets.bamgrid.com/product/starplus/images/logo.770970996243b55d166fbeb8b1a52b36.svg);
+    font-size: contain;
+    background-repeat: no-repeat;
+    height: 200px;
+    min-height: 38px;
+    min-width: 63px;
+    width: 200px;
+
+    margin-left: 46%;
+    margin-top: 5%;
+}
+
+.input {
+    width: 80%;
+    padding: 2%;
+    margin-top: 4%;
+    color: white;
+
+    background-color: rgba(61, 61, 61, 0.575);
+    border: black 0.2rem solid;
+    border-radius: 10px;
+}
+
+.input:hover{
+    background-color: rgb(216, 68, 68);
+}
+
+.input::placeholder{
+    color: rgb(255, 255, 255);
+}
+
+.container {
+    background-color: rgb(31, 29, 39);
+    width: 60%;
+    height: 60%;
+    margin-top: -6%;
+    margin-left: 22%;
+}
+
+.container2 {
+
+    margin-left: 18%;
+}
+
+.h2{
+    color: white;
+    font-size: 1.8rem;
+}
+
+.button{
+    margin-left: 5%;
+    padding: 2%;
+    width: 70%;
+    background: rgb(255,0,0);
+    background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(157,91,43,1) 47%, rgba(255,94,0,1) 100%);
+
+    border: black 0.2rem solid;
+    border-radius: 10px;
+}
+
+.register{
+    color: white;
+    padding: 2%;
+    margin-left: 4%;
+    font-size: 1.15rem;
+}
+
+.Link:hover{
+    color: red;
+}
