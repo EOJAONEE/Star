@@ -14,10 +14,9 @@ export default function Home() {
                   <br />
                   <br />
 
-                <button className={styles.oferta}><Link href={`/user/register`}>APROVEITE A OFERTA COMBO+</Link></button>
+                <Link  href={`/user/register`}><button className={styles.oferta}>APROVEITE A OFERTA COMBO+</button></Link>
               </div>
           </form>
     </main>
   )
 }
-''
