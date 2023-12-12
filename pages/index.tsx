@@ -1,22 +1,74 @@
+import { checktoken } from "@/services/tokenConfig"
+import { deleteCookie, getCookie } from "cookies-next"
 import styles from "@/styles/home.module.css"
-import Link from "next/link"
+import { useRouter } from "next/router"
+import {useEffect, useState} from 'react'
 
 export default function Home() {
+  //Recarregar a pagina
+  const router = useRouter();
+
+  const [data, setData]: any = useState();
+
+  async function fetchData() {
+    const response = await fetch(`/api/action/movie/select`, {
+      method: 'GET'
+    })
+
+    const responseJson = await response.json();
+
+    setData(responseJson);
+
+    console.log(data);
+  }
+
+  //Funções que vão acontecer antes da pagina carragar
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  function logout() {
+    deleteCookie(`authorization`);
+
+    router.push(`/user/login`);
+  }
+
+  function movieClick(movieName:string) {
+    router.push(`/movie/` + movieName)
+  }
+
   return (
     <main className={styles.body}>
-      <button className={styles.button}><Link href={`/user/login`} >ENTRAR</Link></button>
-          <form className={`flex min-h-screen`}>   
-            <div className={styles.logo}>
+      <nav className={styles.navBar}>
+
+        
+        <button className={styles.btnLogout} onClick={logout} type="submit">Logout</button>
+      </nav>
+      <div className={styles.container}>
+
+        {
+          data != undefined && data instanceof Array ?
+
+          data.map(movie => (
+
+            <div className={styles.card} onClick={() => {movieClick(movie.name)}}>
+              <p>{movie.name}</p>
+              <p>{movie.releaseDate}</p>
             </div>
-              <div className={styles.container}>
-                <h1 className={styles.h1}>Séries, filmes e esportes que você adora.</h1>
 
-                  <br />
-                  <br />
 
-                <Link  href={`/user/register`}><button className={styles.oferta}>APROVEITE A OFERTA COMBO+</button></Link>
-              </div>
-          </form>
+          ))
+
+          :
+
+          <div className={styles.Filmes_bar}>
+            Filmes não encontrados
+          </div>
+        }
+
+      </div>
     </main>
   )
 }
+
+
