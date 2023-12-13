@@ -53,7 +53,7 @@ export default function loginPage() {
 
     return (
         <main className={`flex min-h-screen`}>
-            <form className={styles.formulario}>
+            <form onSubmit={formSubmit} className={styles.formulario}>
                 <div className={styles.logo}>
                 </div>
                 <div className={styles.container}>
@@ -61,9 +61,9 @@ export default function loginPage() {
                         <br />
                         <h2 className={styles.h2}>Use seu E-mail e Senha para entrar</h2>
 
-                        <input className={styles.input} type="text" placeholder="Digite os seu Email" />
+                        <input value={formData.login} onChange={(event) => {handleFormEdit(event, 'login')}} className={styles.input} type="text" placeholder="Digite os seu Email" />
 
-                        <input className={styles.input} type="password" placeholder="Senha" />
+                        <input value={formData.password} onChange={(event) => {handleFormEdit(event, 'password')}} className={styles.input} type="password" placeholder="Senha" />
                         <br />
                         <br />
                         <br />

@@ -18,10 +18,10 @@ model user {
   username String @unique
   password  String
 
-  create_at DateTime @default((now()))
+  create_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  ratings rating[]
+  //ratings rating[]
 }
 
 //Informações do Filme
@@ -34,5 +34,5 @@ model movie {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  ratings rating[]
+  //ratings rating[]
 }

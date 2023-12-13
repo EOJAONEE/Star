@@ -4,7 +4,9 @@ CREATE TABLE "user" (
     "name" TEXT,
     "email" TEXT NOT NULL,
     "username" TEXT NOT NULL,
-    "password" TEXT NOT NULL
+    "password" TEXT NOT NULL,
+    "create_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL
 );
 
 -- CreateTable
@@ -12,7 +14,9 @@ CREATE TABLE "movie" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
     "releaseDate" TEXT NOT NULL,
-    "imageURL" TEXT NOT NULL
+    "imageURL" TEXT NOT NULL,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL
 );
 
 -- CreateIndex

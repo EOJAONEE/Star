@@ -16,7 +16,7 @@
 .btnLogout {
     background-color: rgb(0, 0, 0);
 
-    border: white 0.1rem solid;
+    border: white 0.2rem solid;
     border-radius: 15px;
 
     margin-top: 1%;
@@ -30,6 +30,26 @@
     color: black;
     background-color: white;
 
+}
+
+.btnCreate {
+    background-color: rgb(0, 0, 0);
+
+    border: white 0.2rem solid;
+    border-radius: 15px;
+
+    margin-top: ;
+    margin-left: 2%;
+
+    width: 5%;
+    padding: 0.7%;
+}
+
+.btnCreate:hover {
+    background-color: white;
+    color: black;
+
+    border: black 0.2rem solid;
 }
 
 .container {

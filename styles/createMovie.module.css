@@ -1,0 +1,47 @@
+
+.container {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgb(31, 29, 39);
+    color: white;
+}
+
+.container2 {
+    background-color: rgb(92, 92, 92);
+
+    margin-left: 25%;
+    margin-top: 10%;
+    text-align: center;
+
+    width: 50%;
+    height: 50%;
+}
+
+.h1 {
+    font-size: 3rem;
+
+    padding-top: 2%;
+}
+
+.input {
+    width: 40%;
+    padding: 0.6%;
+}
+
+.inputDate {
+    color: black;
+    width: 20%;
+}
+
+.inputImage {
+    background-color: black;
+    padding: 1.4%;
+    
+}
+
+.link {
+    background-color: red;
+
+    padding: 2%;
+}

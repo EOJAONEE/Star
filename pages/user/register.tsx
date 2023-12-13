@@ -54,44 +54,44 @@ export default function registerPage() {
 
     return (
         <main className={`flex min-h-screen`}>
-            <form className={styles.formulario} >
+            <form onSubmit={formSubmit} className={styles.formulario} >
                 <div className={styles.logo}>
                 </div>
 
                 <div className={styles.container}>
                     <div>
-                        <h1 className={styles.h1}>Crie sua conta</h1>
+                            <h1 className={styles.h1}>Crie sua conta</h1>
 
-                        <h2 className={styles.h2}>Digite seu E-mail,senha e nome de usuario</h2>
+                            <h2 className={styles.h2}>Digite seu E-mail,senha e nome de usuario</h2>
 
-                        <br />
+                            <br />
 
-                        <input className={styles.input} type="text" placeholder="Digite seu Nome" />
+                            <input value={formData.name} onChange={(event) => {handleFormEdit(event , 'name')}} className={styles.input} type="text" placeholder="Digite seu Nome" />
 
-                        <br />
-                        <br />
+                            <br />
+                            <br />
 
-                        <input className={styles.input} type="text" placeholder="Digite seu E-mail" />
+                            <input value={formData.email} onChange={(event) => {handleFormEdit(event, 'email')}} className={styles.input} type="text" placeholder="Digite seu E-mail" />
 
-                        <br />
-                        <br />
-                        <input className={styles.input} type="text" placeholder="Nome de Usuario" />
+                            <br />
+                            <br />
+                            <input value={formData.username} onChange={(event) => {handleFormEdit(event, 'username')}} className={styles.input} type="text" placeholder="Nome de Usuario" />
 
-                        <br />
-                        <br />
+                            <br />
+                            <br />
 
-                        <input className={styles.input} type="password" placeholder="Senha" />
+                            <input value={formData.password} onChange={(event) => {handleFormEdit(event, 'password')}} className={styles.input} type="password" placeholder="Senha" />
 
-                        <br />
-                        <br />
+                            <br />
+                            <br />
 
-                        <input className={styles.input} type="password" placeholder="Confirme sua senha" />
+                            <input value={formData.confirmpassword} onChange={(event) => {handleFormEdit(event, 'confirmpassword')}} className={styles.input} type="password" placeholder="Confirme sua senha" />
 
-                        <br />
-                        <br />
+                            <br />
+                            <br />
 
-                        <button className={styles.button}>Continuar</button>
-                        <h3 className={styles.h3}>Já possui uma conta? <Link className={styles.Link} href={`/user/login`}>Acessar</Link> </h3>
+                            <button className={styles.button}>Continuar</button>
+                            <h3 className={styles.h3}>Já possui uma conta? <Link className={styles.Link} href={`/user/login`}>Acessar</Link> </h3>
                     </div>
                 </div>
             </form>
