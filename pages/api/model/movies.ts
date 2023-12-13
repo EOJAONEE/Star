@@ -19,9 +19,9 @@ export async function findMovieByNameModel(_name: string) {
         where: {
             name: _name
         },
-        //include: {
-            //retings:true
-        //}
+        include: {
+            retings:true
+        }
     });
 
     return movie
