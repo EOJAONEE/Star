@@ -10,29 +10,41 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-//Informações Usuario
 model user {
-  id Int @id @default(autoincrement())
-  name  String?
+  id  Int @id @default(autoincrement())
+  name  String
   email String  @unique
-  username String @unique
+  username  String  @unique
   password  String
-
-  create_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  //ratings rating[]
-}
-
-//Informações do Filme
-model movie {
-  id Int @id @default(autoincrement())
-  name String @unique
-  releaseDate String
-  imageURL String
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  //ratings rating[]
+  ratings rating[]
+}
+
+model movie {
+  id Int @id @default(autoincrement())
+  name  String @unique
+  releaseDate String
+  imageURL  String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  ratings rating[]
+}
+
+model rating {
+  id Int @id @default(autoincrement())
+  value Int @default(0)
+  comment String @default("")
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  userId  Int
+  movieId Int
+  user  user  @relation(fields: [userId], references: [id])
+  movie movie @relation(fields: [movieId], references: [id])
 }

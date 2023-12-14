@@ -1,11 +1,11 @@
 -- CreateTable
 CREATE TABLE "user" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "name" TEXT,
+    "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "username" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "create_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" DATETIME NOT NULL
 );
 
@@ -17,6 +17,19 @@ CREATE TABLE "movie" (
     "imageURL" TEXT NOT NULL,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" DATETIME NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "rating" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "value" INTEGER NOT NULL DEFAULT 0,
+    "comment" TEXT NOT NULL DEFAULT '',
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL,
+    "userId" INTEGER NOT NULL,
+    "movieId" INTEGER NOT NULL,
+    CONSTRAINT "rating_userId_fkey" FOREIGN KEY ("userId") REFERENCES "user" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "rating_movieId_fkey" FOREIGN KEY ("movieId") REFERENCES "movie" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateIndex

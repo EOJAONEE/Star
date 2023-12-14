@@ -20,6 +20,7 @@ export async function findMovieByNameModel(_name:string) {
         },
     });
 
+    return movie
 }    
 
 

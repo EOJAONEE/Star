@@ -108,13 +108,13 @@ export default function page({ movieName }: any) {
 
                             {
 
-                                //movie.ratings.map(rating => (
-                                    //<div className={styles.singleRating}>
-                                        //<p className={styles.rUsername}>Usuário: {rating.user.username}</p>
-                                        //<p className={styles.rValue}>Nota: {rating.value}</p>
-                                        //<p className={styles.rComment}> {rating.comment} </p>
-                                    //</div>
-                                //))
+                                movie.ratings.map(rating => (
+                                    <div className={styles.singleRating}>
+                                        <p className={styles.rUsername}>Usuário: {rating.user.username}</p>
+                                        <p className={styles.rValue}>Nota: {rating.value}</p>
+                                        <p className={styles.rComment}> {rating.comment} </p>
+                                    </div>
+                                ))
 
                             }
 

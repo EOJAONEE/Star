@@ -14,7 +14,7 @@
 }
 
 .movieImage {
-    margin-left: 20%;
+    margin-left: 25%;
     padding-top: 2%;
 
     width: 50%;
@@ -28,6 +28,7 @@
     color: rgb(255, 255, 255);
     background-color: rgb(31, 29, 39);
 
+    margin-left: 5%;
     padding-top: 3%;
     padding-bottom: 3%;
 }
@@ -48,6 +49,7 @@
 
     height: 15%;
     margin-top: 1%;
+    margin-left: 5%;
 
     display: grid;
     grid-template-columns: 75% 12% 13%;

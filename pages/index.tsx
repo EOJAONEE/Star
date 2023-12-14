@@ -73,37 +73,49 @@ export default function Home() {
   }
 
   return (
-    <main className={styles.body}>
-      <nav className={styles.navBar}>
+    <main className={`flex min-h-screen`}>
+      <main className={styles.body}>
+        <nav className={styles.navBar}>
+
+          <button className={styles.btnLogout} onClick={logout} type="submit">Logout</button>
+
+          <div className={styles.Link}>
+            <Link href={`/movie/create`} className={styles.btnCreate}>Criar Filme</Link>
+          </div>
+
+        </nav>
+
+        <div className={styles.logo}>
+        </div>
 
 
-        <button className={styles.btnLogout} onClick={logout} type="submit">Logout</button>
-        <Link href={`/movie/create`} className={styles.btnCreate}>Criar Filme</Link>
-      </nav>
-      <div className={styles.container}>
+        <div className={styles.container}>
 
-        {
-          data != undefined && data instanceof Array ?
+          <h1 className={styles.h1}><b>Jogos da Champions-League</b></h1>
 
-            data.map(movie => (
+          {
+            data != undefined && data instanceof Array ?
 
-              <div className={styles.card} onClick={() => { movieClick(movie.name) }}>
-                <img src={movie.imageURL} alt="" />
-                <p>{movie.name}</p>
-                <p>{movie.releaseDate}</p>
+              data.map(movie => (
+
+                <div className={styles.card} onClick={() => { movieClick(movie.name) }}>
+                  <img src={movie.imageURL} alt="" />
+                  <p>{movie.name}</p>
+                  <p>{movie.releaseDate}</p>
+                </div>
+
+
+              ))
+
+              :
+
+              <div className={styles.Filmes_bar}>
+                Filmes não encontrados
               </div>
+          }
 
-
-            ))
-
-            :
-
-            <div className={styles.Filmes_bar}>
-              Filmes não encontrados
-            </div>
-        }
-
-      </div>
+        </div>
+      </main>
     </main>
   )
 }
