@@ -1,26 +1,21 @@
-import styles from "@/styles/movie.module.css"
+import styles from "@/styles/movie.module.css";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import imageMovie from "@/public/img_not_found.png"
-import { error } from "console";
 import { getCookie } from "cookies-next";
 import { checktoken } from "@/services/tokenConfig";
-//useEffect Pre-renderizar coisas
-//useState Criar variaveis
 
-export default function page({movieName}:any) {
+export default function page({ movieName }: any) {
 
-    const [ movie , setMovie ]:any = useState();
-    //aparecer quem escreveu
+    const [movie, setMovie]: any = useState();
     const [formData, setFormData] = useState({
         value: 5,
-        comment:'',
+        comment: '',
         email: '',
         movieName: movieName
     });
     const router = useRouter();
 
-    function handleFormEdit(event:any , field:string) {
+    function handleFormEdit(event: any, field: string) {
         setFormData({
             ...formData,
             [field]: event.target.value
@@ -34,107 +29,104 @@ export default function page({movieName}:any) {
 
             const tokenInfos = checktoken(cookie);
 
-
-            console.log(tokenInfos);
-
-            const response = await fetch(`/api/action/rating/create` , {
+            const response = await fetch(`/api/action/rating/create`, {
                 method: 'POST',
-                headers: {'Content-type' : 'application/json'},
+                headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify({
-                    value: Number (formData.value),
+                    value: Number(formData.value),
                     comment: formData.comment,
-                    email:tokenInfos.login,
+                    email: tokenInfos.login,
                     movieName: formData.movieName
                 })
             });
 
             const responseJson = await response.json();
 
-            if (response.status != 201){
+            if (response.status != 201) {
                 throw new Error(responseJson.message);
             }
 
         }
-        catch ( err:any ) {
+        catch (err: any) {
             alert(err.message);
         }
     }
 
     async function fetchData() {
         try {
-            const response = await fetch(`/api/action/movie/find?name=`+movieName , {
+            const response = await fetch(`/api/action/movie/find?name=` + movieName, {
                 method: 'GET'
-            })
-            
+            });
+
             const responseJson = await response.json();
 
             setMovie(responseJson);
-
         }
-        catch (err:any) {
-            alert(err.message)
+        catch (err: any) {
+            alert(err.message);
         }
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         fetchData();
 
-    } , []);
+    }, []);
 
-    return(
-        <main>
+
+    return (
+        <main className={`flex min-h-screen`}>
             <div className={styles.container}>
 
-                { movie != undefined ?
-                
-                <div className={styles.page}>
-                    <img src={imageMovie.src} className={styles.movieImage} />
+                {movie != undefined ?
+
+                    <div className={styles.page}>
+                        <img src={movie.imageURL} className={styles.movieImage} />
 
                         <div className={styles.movieInfos}>
                             <p className={styles.field}>Informações do Filme</p>
-                            <p className={styles.field}>O nome do filme é: {movie.name}</p>
-                            <p className={styles.field}>A data de lançamento: {movie.releaseDate} </p>
+                            <p className={styles.field}>O nome do filme é : {movie.name} </p>
+                            <p className={styles.field}>A data de lançamento é: {movie.releaseDate} </p>
                         </div>
 
-                        <form onSubmit={formSubmit} className={styles.retingbox}>
+                        <form onSubmit={formSubmit} className={styles.ratingBox}>
 
-                            <textarea onChange={(event) => {handleFormEdit(event,'comment')}} value={formData.comment} className={styles.ratingComment} placeholder="Digite o seu comentário"></textarea>
+                            <textarea onChange={(event) => { handleFormEdit(event, 'comment') }} value={formData.comment} className={styles.ratingComment} placeholder="Digite o seu comentário"></textarea>
 
-                            <select onChange={(event) => {handleFormEdit(event,'value')}} value={formData.value} className={styles.ratingValue}>
+                            <select onChange={(event) => { handleFormEdit(event, 'value') }} value={formData.value} className={styles.ratingValue}>
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
-                                <option  value="4">4</option>
-                                <option  value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
 
-                            <button className={styles.ratingButton}>Enviar</button>
+                            <button className={styles.ratingButton} >Enviar</button>
                         </form>
 
                         <div className={styles.ratings}>
 
                             {
 
-                                    movie.ratings.map(rating => (
-                                        <div className={styles.singleRating}>
-                                            <p className={styles.rUsername}>Usuário: {rating.user.username}</p>
-                                            <p className={styles.rValue}>Nota: {rating.value}</p>
-                                            <p className={styles.rComment}> {rating.comment}</p>
-                                        </div>
-                                    ))
+                                //movie.ratings.map(rating => (
+                                    //<div className={styles.singleRating}>
+                                        //<p className={styles.rUsername}>Usuário: {rating.user.username}</p>
+                                        //<p className={styles.rValue}>Nota: {rating.value}</p>
+                                        //<p className={styles.rComment}> {rating.comment} </p>
+                                    //</div>
+                                //))
 
                             }
 
                         </div>
 
-                </div>
-   
-                :
+                    </div>
 
-                <div>
-                    <p>Filme não encontrado.</p>
-                </div>
+                    :
+
+                    <div>
+                        <p>Filme não encontrado.</p>
+                    </div>
 
                 }
 
@@ -143,9 +135,8 @@ export default function page({movieName}:any) {
     );
 }
 
-//Pegar nome do que foi digitado
-export function getServerSideProps( context:any) {
-    const {movieName} = context.query;
+export function getServerSideProps(context: any) {
+    const { movieName } = context.query;
 
     return {
         props: {

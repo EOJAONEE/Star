@@ -1,34 +1,34 @@
-import { createMovieModel, findMovieByNameModel, selectMoviesModel } from "../model/movies";
+import { createMovieModel, findMovieByNameModel, selectMovieModel } from "../model/movies";
 
-export async function createMovie(name: string, releaseDate: string, imageURL: string) {
-    try {
+export async function createMovie(name:string, releaseDate:string, imageURL:string) {
+    try{
         const movieByName = await findMovieByNameModel(name);
 
-        if (movieByName != undefined) {
-            return { message: "Movie already registered" };
-        }
+            if ( movieByName != undefined) {
+                return {message: "Movie already registered"};
+            }
 
-        const response = await createMovieModel(name, releaseDate, imageURL);
-        return response;
+            const response = await createMovieModel(name, releaseDate, imageURL);
+            return response;
     }
     catch (err) {
-        return { message: "Something went wrong" };
+        return {message: "Something went wrong" };
     }
 }
-
+ 
 
 export async function selectMovies() {
     try {
-        const movies = await selectMoviesModel();
+        const movies = await selectMovieModel();
 
         return movies;
     }
-    catch (err) {
-        return { message: "Something wewnt  wrong" };
+    catch(err) {
+        return { message: "Something went wrong"};
     }
 }
 
-export async function findMovieByName(name: string) {
+export async function findMovieByName(name:string) {
     try {
         const movie = await findMovieByNameModel(name);
 
@@ -39,7 +39,7 @@ export async function findMovieByName(name: string) {
         return movie;
 
     }
-    catch (err) {
-        return { message: "Something went wrong" };
+    catch(err) {
+        return { message: "Something went wrong"};
     }
 }

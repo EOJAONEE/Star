@@ -1,9 +1,9 @@
-import { checktoken } from "@/services/tokenConfig"
-import styles from "@/styles/login.module.css"
-import { getCookie, setCookie } from "cookies-next"
-import { useRouter } from "next/router"
-import { useState } from "react"
-import Link from "next/link"
+import {checktoken} from '@/services/tokenConfig';
+import styles from '@/styles/login.module.css';
+import { setCookie , getCookie } from 'cookies-next';
+import { useRouter } from 'next/router';
+import {useState} from 'react';
+import Link from 'next/link';
 
 export default function loginPage() {
 
@@ -14,20 +14,20 @@ export default function loginPage() {
 
     const router = useRouter();
 
-    function handleFormEdit(event: any, fielName: string) {
+    function handleFormEdit(event:any , fieldName:string) {
         setFormData({
             ...formData,
-            [fielName]: event.target.value
+            [fieldName] : event.target.value
         })
     }
 
-    async function formSubmit(event: any) {
+    async function formSubmit(event:any) {
         event.preventDefault();
 
         try {
-            const response = await fetch(`/api/action/user/login`, {
+            const response = await fetch('/api/action/user/login', {
                 method: 'POST',
-                headers: { 'Content-type': 'application/json' },
+                headers: {'Content-type' : 'application/json'},
                 body: JSON.stringify(formData)
             });
 
@@ -40,13 +40,13 @@ export default function loginPage() {
                 throw new Error(responseJson.message);
             }
             else {
-                setCookie('autorization', responseJson.token);
+                setCookie('authorization' , responseJson.token);
 
                 router.push(`/`)
             }
 
         }
-        catch (err: any) {
+        catch( err:any ){
             alert(err.message);
         }
     }
@@ -67,7 +67,7 @@ export default function loginPage() {
                         <br />
                         <br />
                         <br />
-                        <button className={styles.button}>Continuar</button>
+                        <button className={styles.button}>Enviar</button>
 
                         <div className={styles.register}>
                             <h3>Não Possui uma conta? <Link className={styles.Link} href={`/user/register`}><b><u>Registre-se</u></b></Link></h3>

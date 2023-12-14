@@ -1,26 +1,28 @@
 import {prisma} from "@/db";
 
 //Fazer a avaliação
-export async function createRatingModel(_value:number , _comment:string , _userId:number , _movieId:number) {
+export async function createRatingModel(_value:number , _comment:string , 
+    _userId:number , _movieId:number) {
 
-    const rating = await prisma.rating.create ({
-        data: {
-            value: _value,
-            comment: _comment,
-            user:{
-                connect: {
-                    id: _userId
-                }
-            },
-            movie: {
-                connect: {
-                    id: _movieId
+        const rating = await prisma.rating.create({
+            data: {
+                value: _value,
+                comment: _comment,
+                user: {
+                    connect: {
+                        id: _userId
+                    }
+                },
+                movie: {
+                    connect: {
+                        id: _movieId
+                    }
                 }
             }
-        }
-    });
+        });
 
-    return rating
+
+        return rating;
 }
 
 export async function findRatingByUserAndMovie(_userId:number , _movieId:number) {

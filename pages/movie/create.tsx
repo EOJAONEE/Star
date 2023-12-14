@@ -62,8 +62,8 @@ export default function page() {
                 },
                 body: JSON.stringify( {
                     name: formData.name,
-                    releasedate: formData.releaseDate,
-                    imgURL: imgURL
+                    releaseDate: formData.releaseDate,
+                    imageURL: imgURL
                 })
             });
             
@@ -99,12 +99,19 @@ export default function page() {
                         <br />
                         <br />
 
-                        <input onChange={handleImageEdit} className={styles.inputImage} type="file" accept='jpg, .jpeg, .png, .gif' />
+                        <input onChange={handleImageEdit} className={styles.inputImage} type="file" accept='jpg, .jpeg, .png, .gif, .webp' />
                         
                         <br />
                         <br />
+                        <div className={styles.contLink}>
+                            <button className={styles.button}>Enviar</button>
+                        </div>
+                        <br />
+                        <br />
+                        <div className={styles.containerLink}>
+                            <Link href={`/`} className={styles.link}>Voltar</Link>
+                        </div>
 
-                        <Link className={styles.link} href={`/`}>Enviar</Link>
                     </form>
                 </div>
             </div>
