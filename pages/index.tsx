@@ -93,6 +93,8 @@ export default function Home() {
 
           <h1 className={styles.h1}><b>Jogos da Champions-League</b></h1>
 
+          <h2 className={styles.h2}><b>Series</b></h2>
+
           {
             data != undefined && data instanceof Array ?
 

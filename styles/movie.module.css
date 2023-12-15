@@ -1,7 +1,7 @@
 .container {
     background-color: rgb(31, 29, 39);
     width: 100vw;
-    height: 100vh;
+    height: 100%;
 }
 
 .page {
@@ -96,4 +96,53 @@
     height: 80%;
     margin-right: 10%;
     margin-top: 6%;
+}
+
+.ratings {
+    margin-top: 3%;
+    margin-left: -10%;
+
+    width: 100vw;
+    height: 10;
+
+    color: white;
+    background-color: rgb(31, 29, 39);
+}
+
+.singleRating{
+    margin-left: 15%;
+
+    width: 70%;
+    height: 110%;
+
+    background-color: rgb(31, 29, 39);
+
+    padding-bottom: 2%;
+}
+
+.rUsername {
+    border: white 0.15rem solid;
+    border-radius: 12px;
+
+    background-color: black;
+
+    padding-bottom: 2%;
+}
+
+.rValue {
+    border: white 0.15rem solid;
+    border-radius: 12px;
+
+    background-color: black;
+
+    padding-bottom: 2%;
+}
+
+.rComment {
+    border: white 0.15rem solid;
+    border-radius: 12px;
+
+    background-color: black;
+
+    padding-bottom: 2%;
 }
