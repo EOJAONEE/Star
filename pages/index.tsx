@@ -3,7 +3,6 @@ import { deleteCookie, getCookie } from "cookies-next"
 import styles from "@/styles/home.module.css"
 import { useRouter } from "next/router"
 import { useEffect, useState } from 'react'
-import { createMovie } from "./api/controller/MovieController"
 import Link from "next/link"
 
 export default function Home() {

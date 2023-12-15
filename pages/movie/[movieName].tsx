@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
 import { checktoken } from "@/services/tokenConfig";
+import Link from "next/link";
 
 export default function page({ movieName }: any) {
 
@@ -76,6 +77,10 @@ export default function page({ movieName }: any) {
     return (
         <main className={`flex min-h-screen`}>
             <div className={styles.container}>
+
+                <div className={styles.containerLink}>
+                    <Link className={styles.link} href={"/"}>Voltar</Link>
+                </div>
 
                 {movie != undefined ?
 
